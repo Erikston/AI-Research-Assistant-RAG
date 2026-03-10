@@ -45,7 +45,7 @@ Generated Answer
 - FAISS (Vector Database)  
 - HuggingFace Transformers  
 - Sentence Transformers  
-- HTML, CSS, JavaScript  
+- HTML, CSS 
 
 ---
 
@@ -138,7 +138,3 @@ Ask questions about the uploaded research papers.
 
 ---
 
-## 👨‍💻 Author
-
-Rahul Babu  
-Artificial Intelligence & Data Science Student
