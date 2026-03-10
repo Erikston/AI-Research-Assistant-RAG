@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AI Research Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<h1>AI Research Assistant</h1>
+
+<div id="chatbox"></div>
+
+<div class="input-area">
+    <input id="question" type="text" placeholder="Ask a question...">
+    <button onclick="sendQuestion()">Send</button>
+</div>
+
+<script>
+
+async function sendQuestion() {
+
+    const questionInput = document.getElementById("question")
+    const question = questionInput.value
+
+    if(question === "") return
+
+    const chatbox = document.getElementById("chatbox")
+
+    chatbox.innerHTML += `<div class="user">You: ${question}</div>`
+
+    questionInput.value = ""
+
+    const response = await fetch("/ask", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({question: question})
+    })
+
+    const data = await response.json()
+
+    chatbox.innerHTML += `<div class="ai">AI: ${data.answer}</div>`
+
+    chatbox.scrollTop = chatbox.scrollHeight
+}
+
+</script>
+
+</body>
+
+</html>
